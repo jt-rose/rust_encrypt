@@ -1,4 +1,7 @@
 use std::io;
+use crate::encryptor::Encryptable;
+
+pub mod encryptor;
 
 fn main() {
     println!("Input the string you'd like to encrypt: ");
@@ -8,5 +11,5 @@ fn main() {
         .read_line(&mut user_input)
         .expect("could not read user input");
 
-    println!("Your encrypted string is: {}", user_input);
+    println!("Your encrypted string is: {}", encryptor::rot13::Rot13( user_input).encrypt());
 }
