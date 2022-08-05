@@ -1,5 +1,9 @@
-pub mod rot13;
+use std::error::Error;
 
-pub trait Encryptable {
-    fn encrypt(&self) -> String;
+pub mod rot13;
+pub mod rsa;
+
+pub trait Cipher {
+    fn original_string(&self) -> Result<String, Box<dyn Error>>;
+    fn encrypted_string(&self) -> Result<String, Box<dyn Error>>;
 }
